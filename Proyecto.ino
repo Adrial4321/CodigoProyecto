@@ -1,6 +1,7 @@
 #include <Servo.h>
 Servo myservo1;
 Servo myservo2;
+
 int motor1EnA = 10; // Enable para Motor 1
 int motor1In1 = 9; // Control de dirección 1 para Motor 1
 int motor1In2 = 8; // Control de dirección 2 para Motor 1
@@ -35,6 +36,8 @@ void loop() {
   if (d1 > 10 || d2 > 10) {
       Adelante();
   }else {
+    Parar();
+    delay(500)
     Retrocerder();
   }
   if (Serial.available() > 0) { 
@@ -71,10 +74,8 @@ void Retroceder(){
   delay(300)
 }
 void Parar(){
-  digitalWrite(motor1In1, LOW);
-  digitalWrite(motor1In2, LOW);
-  digitalWrite(motor2In1, LOW);
-  digitalWrite(motor2In2, LOW);
+  digitalWrite(motor1EnA, LOW);
+  digitalWrite(motor2EnA, LOW);
 }
 
 
